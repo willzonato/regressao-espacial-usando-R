@@ -2,22 +2,22 @@
 
 ## Inferência estatística
 
-Segundo Sarmiento-Barbieri[-@sarmiento-barbieri], "o método tradicional, por muitos anos, tem sido ignorar a dependência espacial dos dados e apenas rodar uma regressão linear" do tipo:
+Segundo @sarmiento-barbieri, "o método tradicional, por muitos anos, tem sido ignorar a dependência espacial dos dados e apenas rodar uma regressão linear" do tipo:
 
 \begin{equation}
   \label{eq-OLS}
   Y = X\beta + \epsilon
 \end{equation}
 
-> O problema em ignorar a estrutura espacial dos dados implica que as estimativas da regressão linear no modelo não-espacial podem estar enviesadas, inconsistentes ou ineficientes, dependendo de qual é a real dependência (dos dados espaciais).[@sarmiento-barbieri]
+> O problema em ignorar a estrutura espacial dos dados implica que as estimativas da regressão linear no modelo não-espacial podem estar enviesadas, inconsistentes ou ineficientes, dependendo de qual é a real dependência (dos dados espaciais)[@sarmiento-barbieri].
 
 ## Modelando a dependência espacial
 
-Autocorrelação espacial mede o quanto um dado fenômeno de interesse está correlacionado consigo mesmo no Espaço (Cliff and Ord (1973) apud [@sarmiento-barbieri]).
+Autocorrelação espacial mede o quanto um dado fenômeno de interesse está correlacionado consigo mesmo no Espaço (Cliff and Ord (1973) apud @sarmiento-barbieri).
 
-Sarmiento-Barbieri[-@sarmiento-barbieri] salienta que a autocorrelação espacial pode ser positiva, ou seja, valores similares aparecem sempre próximos uns dos outros, formando um *cluster*, ou negativa, ou seja, dados vizinhos são dissimilares.
+@sarmiento-barbieri salienta que a autocorrelação espacial pode ser positiva, ou seja, valores similares aparecem sempre próximos uns dos outros, formando um *cluster*, ou negativa, ou seja, dados vizinhos são dissimilares.
 
-Segundo ANSELIN (apud [@sarmiento-barbieri]), pode-se expressar a existência de autocorrelação espacial com a seguinte condição de momentos:
+Segundo ANSELIN (apud @sarmiento-barbieri), pode-se expressar a existência de autocorrelação espacial com a seguinte condição de momentos:
 
 \begin{equation}
   \label{eq-cov}
@@ -26,7 +26,7 @@ Segundo ANSELIN (apud [@sarmiento-barbieri]), pode-se expressar a existência de
 
 onde $y_i$ and $y_j$ são observações de uma variável aleatória nos locais $i$ e $j$.
 
-Para [@sarmiento-barbieri], "o problema então seria estimar a matriz de covariância $N$ x $N$ diretamente para $N$ observações." 
+Para @sarmiento-barbieri, "o problema então seria estimar a matriz de covariância $N$ x $N$ diretamente para $N$ observações." 
 
 > Para contornar esse problema, impomos restrições à natureza das interações. Um tipo de restrição é definir para cada ponto de dados um "conjunto de vizinhança" relevante. Na econometria espacial, isto é operacionalizado através da **matriz espacial de pesos**.
 
@@ -46,13 +46,13 @@ Outro procedimento viável é definir dois dados como vizinhos se eles obedecem 
 
 ## Modelos de regressão espacial
 
-Segundo Trivelloni[-@trivelloni07], os principais modelos de regressão utilizados na econometria espacial são o Modelo da Variável Dependente e o Modelo Espacial do Erro.
+Segundo @trivelloni07, os principais modelos de regressão utilizados na econometria espacial são o Modelo da Variável Dependente e o Modelo Espacial do Erro.
 
 Nesta seção veremos as principais características de cada modelo e sua formulação.
 
 ### Modelos espaciais autoregressivos ou Modelo da Variável Dependente
 
-A dependência espacial pode ser modelada em uma regressão linear  de forma semelhante a um processo autorregressivo em séries temporais. Segundo [@sarmiento-barbieri], isto pode ser escrito formalmente como na equação abaixo:
+A dependência espacial pode ser modelada em uma regressão linear  de forma semelhante a um processo autorregressivo em séries temporais. Segundo @sarmiento-barbieri, isto pode ser escrito formalmente como na equação abaixo:
 
 \begin{equation}
   \label{eq-SAR}
@@ -61,7 +61,7 @@ A dependência espacial pode ser modelada em uma regressão linear  de forma sem
 
 Vê-se na equação \ref{eq-SAR}, que além dos termos da equação \ref{eq-OLS}, tem-se um termo adicional ($\rho Wy$), que é justamente o termo que modela a autocorrelação da variável dependente ($y$), em que $W$ é a matriz de pesos espaciais e$\rho$ é o parâmetro (a ser estimado) de autocorrelação espacial da variável dependente.
 
-Porém, de acordo com ANSELIN (apud [@sarmiento-barbieri]), ao contrário das séries temporais, nas correlações espaciais os $[Wy]_i$ estão sempre correlacionados com os $\epsilon_i$ independentemente da estrutura dos erros. Isto implica que as estimativas no modelo não-espacial estarão enviesadas e inconsistentes.
+Porém, de acordo com ANSELIN (apud @sarmiento-barbieri), ao contrário das séries temporais, nas correlações espaciais os $[Wy]_i$ estão sempre correlacionados com os $\epsilon_i$ independentemente da estrutura dos erros. Isto implica que as estimativas no modelo não-espacial estarão enviesadas e inconsistentes.
 
 ### Modelo espacial do erro
 
@@ -81,7 +81,7 @@ Com:
 
 ## Modelos geoestatísticos
 
-Segundo Trivelloni[-@trivelloni07], "os modelos geostatísticos buscam representar e modelar a variação espacial de uma variável regionalizada".
+Segundo @trivelloni07, "os modelos geostatísticos buscam representar e modelar a variação espacial de uma variável regionalizada".
 
 Variável regionalizada, ou seja, uma variável aleatória ($Z$) em que há dependência entre seu valor e sua localização espacial, pode ser expressa como[@trivelloni07]:
 
@@ -117,6 +117,6 @@ A estatística em pauta depende da escolha da matriz $W$.
 
 ### Teste do multiplicador de Lagrange
 
-Embora o teste de Moran tenha a interessante característica de ter um alto poder contra uma ampla gama de alternativas (ANSELIN apud [@sarmiento-barbieri], o teste não dá parâmetros para a escolha de modelos alternativos.
+Embora o teste de Moran tenha a interessante característica de ter um alto poder contra uma ampla gama de alternativas (ANSELIN apud @sarmiento-barbieri, o teste não dá parâmetros para a escolha de modelos alternativos.
 
 Por outro lado, o teste  do multiplicador de Lagrange especifica as hipóteses alternativas de autocorrelação espacial da variável dependente e da autocorrelação espacial dos resíduos, o que pode ser útil nestes casos.

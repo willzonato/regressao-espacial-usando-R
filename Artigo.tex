@@ -27,7 +27,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Regressão espacial com o uso do R},
-            pdfauthor={Gabriel Zanela - gazela@gmail.com; Auditoria, Avaliaçãoes e Perícias de Engenharia; Instituto de Pós-Graduação - IPOG},
+            pdfauthor={Luiz Fernando Palin Droubi; Willian Zonato},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -40,37 +40,37 @@
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\ImportTok}[1]{{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
-\newcommand{\BuiltInTok}[1]{{#1}}
-\newcommand{\ExtensionTok}[1]{{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
-\newcommand{\RegionMarkerTok}[1]{{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
-\newcommand{\NormalTok}[1]{{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -118,13 +118,12 @@
   \title{Regressão espacial com o uso do R}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Gabriel Zanela -
-\href{mailto:gazela@gmail.com}{\nolinkurl{gazela@gmail.com}} \\ Auditoria, Avaliaçãoes e Perícias de Engenharia \\ Instituto de Pós-Graduação - IPOG}
+  \author{Luiz Fernando Palin Droubi \\ Willian Zonato}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Florianópolis, SC, 16 de May de 2017}
+  \date{21 de fevereiro de 2018}
 
 \usepackage{sectsty} \sectionfont{\fontsize{12}{15}\selectfont}
 \usepackage[brazil]{babel}
@@ -163,7 +162,7 @@ imóveis. Inferência}
 
 \section{INTRODUÇÃO}\label{introducao}
 
-Segundo Trivelloni(\protect\hyperlink{ref-trivelloni07}{2007}),
+Segundo TRIVELLONI (\protect\hyperlink{ref-trivelloni07}{2007}),
 
 \begin{quote}
 os modelos tradicionais de inferência estatística mostram dificuldades
@@ -182,8 +181,8 @@ mostram dificuldades para lidar de maneira eficiente com os efeitos
 espaciais nos dados; as variáveis de localização, quando não são
 corretamente especificadas nos modelos, além da perda de poder
 explicativo dos modelos produzem autocorrelação espacial nos resíduos da
-regressão, invalidando seus resultados.(TRIVELLONI
-\protect\hyperlink{ref-trivelloni07}{2007})
+regressão, invalidando seus resultados(TRIVELLONI
+\protect\hyperlink{ref-trivelloni07}{2007}).
 \end{quote}
 
 Porém, é sabido que ``os modelos de inferência tradicional podem também
@@ -195,19 +194,19 @@ Desta maneira, é possível que sejam combinadas as técnicas da inferência
 estatística tradicional com técnicas espaciais para a especificação da
 compenente espacial do valor, produzindo assim um ``modelo híbrido.''
 
-Ainda de acordo com
-Trivelloni(\protect\hyperlink{ref-trivelloni07}{2007}), ``vários
-trabalhos têm mostrado que esta combinação pode produzir melhores
-resultados que os conseguidos com cada método de forma isolada.''
+Ainda de acordo com TRIVELLONI
+(\protect\hyperlink{ref-trivelloni07}{2007}), ``vários trabalhos têm
+mostrado que esta combinação pode produzir melhores resultados que os
+conseguidos com cada método de forma isolada.''
 
 \section{REVISÃO BIBLIOGRÁFICA}\label{revisao-bibliografica}
 
 \subsection{Inferência estatística}\label{inferencia-estatistica}
 
-Segundo
-Sarmiento-Barbieri(\protect\hyperlink{ref-sarmiento-barbieri}{2016}),
-``o método tradicional, por muitos anos, tem sido ignorar a dependência
-espacial dos dados e apenas rodar uma regressão linear'' do tipo:
+Segundo SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}), ``o método
+tradicional, por muitos anos, tem sido ignorar a dependência espacial
+dos dados e apenas rodar uma regressão linear'' do tipo:
 
 \begin{equation}
   \label{eq-OLS}
@@ -218,8 +217,8 @@ espacial dos dados e apenas rodar uma regressão linear'' do tipo:
 O problema em ignorar a estrutura espacial dos dados implica que as
 estimativas da regressão linear no modelo não-espacial podem estar
 enviesadas, inconsistentes ou ineficientes, dependendo de qual é a real
-dependência (dos dados espaciais).(SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016})
+dependência (dos dados espaciais)(SARMIENTO-BARBIERI
+\protect\hyperlink{ref-sarmiento-barbieri}{2016}).
 \end{quote}
 
 \subsection{Modelando a dependência
@@ -227,15 +226,15 @@ espacial}\label{modelando-a-dependencia-espacial}
 
 Autocorrelação espacial mede o quanto um dado fenômeno de interesse está
 correlacionado consigo mesmo no Espaço (Cliff and Ord (1973) apud
-(SARMIENTO-BARBIERI \protect\hyperlink{ref-sarmiento-barbieri}{2016})).
+SARMIENTO-BARBIERI (\protect\hyperlink{ref-sarmiento-barbieri}{2016})).
 
-Sarmiento-Barbieri(\protect\hyperlink{ref-sarmiento-barbieri}{2016})
+SARMIENTO-BARBIERI (\protect\hyperlink{ref-sarmiento-barbieri}{2016})
 salienta que a autocorrelação espacial pode ser positiva, ou seja,
 valores similares aparecem sempre próximos uns dos outros, formando um
 \emph{cluster}, ou negativa, ou seja, dados vizinhos são dissimilares.
 
-Segundo ANSELIN (apud (SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016})), pode-se expressar a
+Segundo ANSELIN (apud SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016})), pode-se expressar a
 existência de autocorrelação espacial com a seguinte condição de
 momentos:
 
@@ -247,8 +246,8 @@ momentos:
 onde \(y_i\) and \(y_j\) são observações de uma variável aleatória nos
 locais \(i\) e \(j\).
 
-Para (SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016}), ``o problema então
+Para SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}), ``o problema então
 seria estimar a matriz de covariância \(N\) x \(N\) diretamente para
 \(N\) observações.''
 
@@ -282,7 +281,7 @@ obedecem um mesmo critério de distância, isto é, \(j \in N(j)\) se
 \subsection{Modelos de regressão
 espacial}\label{modelos-de-regressao-espacial}
 
-Segundo Trivelloni(\protect\hyperlink{ref-trivelloni07}{2007}), os
+Segundo TRIVELLONI (\protect\hyperlink{ref-trivelloni07}{2007}), os
 principais modelos de regressão utilizados na econometria espacial são o
 Modelo da Variável Dependente e o Modelo Espacial do Erro.
 
@@ -294,9 +293,9 @@ Dependente}\label{modelos-espaciais-autoregressivos-ou-modelo-da-variavel-depend
 
 A dependência espacial pode ser modelada em uma regressão linear de
 forma semelhante a um processo autorregressivo em séries temporais.
-Segundo (SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016}), isto pode ser escrito
-formalmente como na equação abaixo:
+Segundo SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}), isto pode ser
+escrito formalmente como na equação abaixo:
 
 \begin{equation}
   \label{eq-SAR}
@@ -309,8 +308,8 @@ o termo que modela a autocorrelação da variável dependente (\(y\)), em
 que \(W\) é a matriz de pesos espaciais e\(\rho\) é o parâmetro (a ser
 estimado) de autocorrelação espacial da variável dependente.
 
-Porém, de acordo com ANSELIN (apud (SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016})), ao contrário das
+Porém, de acordo com ANSELIN (apud SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016})), ao contrário das
 séries temporais, nas correlações espaciais os \([Wy]_i\) estão sempre
 correlacionados com os \(\epsilon_i\) independentemente da estrutura dos
 erros. Isto implica que as estimativas no modelo não-espacial estarão
@@ -338,7 +337,7 @@ Com:
 
 \subsection{Modelos geoestatísticos}\label{modelos-geoestatisticos}
 
-Segundo Trivelloni(\protect\hyperlink{ref-trivelloni07}{2007}), ``os
+Segundo TRIVELLONI (\protect\hyperlink{ref-trivelloni07}{2007}), ``os
 modelos geostatísticos buscam representar e modelar a variação espacial
 de uma variável regionalizada''.
 
@@ -392,7 +391,7 @@ Lagrange}\label{teste-do-multiplicador-de-lagrange}
 
 Embora o teste de Moran tenha a interessante característica de ter um
 alto poder contra uma ampla gama de alternativas (ANSELIN apud
-(SARMIENTO-BARBIERI \protect\hyperlink{ref-sarmiento-barbieri}{2016}), o
+SARMIENTO-BARBIERI (\protect\hyperlink{ref-sarmiento-barbieri}{2016}), o
 teste não dá parâmetros para a escolha de modelos alternativos.
 
 Por outro lado, o teste do multiplicador de Lagrange especifica as
@@ -407,8 +406,8 @@ regressão espacial usando o R, com o intuito de demonstrar como este
 \emph{software} pode ser utilizado para facilmente aplicar as teorias da
 econometria espacial.
 
-O primeiro exemplo foi extraído de (SARMIENTO-BARBIERI
-\protect\hyperlink{ref-sarmiento-barbieri}{2016}), dados de crimes
+O primeiro exemplo foi extraído de SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}), dados de crimes
 violentos são correlacionados com dados de execução de hipotecas e de
 desemprego na cidade de Chicago (EUA).
 
@@ -418,17 +417,17 @@ autocorrelação espacial dos valores dos imóveis.
 
 \subsection{Exemplo 1}\label{exemplo-1}
 
-O exemplo abaixo é reproduzido de
-Sarmiento-Barbieri(\protect\hyperlink{ref-sarmiento-barbieri}{2016}). Os
-dados aqui utilizados aqui podem ser obtidos no sítio
+O exemplo abaixo é reproduzido de SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}). Os dados aqui
+utilizados aqui podem ser obtidos no sítio
 \href{http://www.econ.uiuc.edu/~lab/workshop/foreclosures/}{www.econ.uiuc.edu/\textasciitilde{}lab/workshop/foreclosures/}.
 
-De posse dos arquivos, primeiramente, deve-se fazer a leitura dos mesmos
-dentro do sistema \emph{R}.
+De posse dos arquivos, primeiramente, deve-se fazer a leitura do
+\emph{shapefile} dentro do sistema \emph{R}, através da função
+\texttt{readOGR} do pacote \texttt{rgdal}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(rgdal)}
 \NormalTok{chi.poly <-}\StringTok{ }\KeywordTok{readOGR}\NormalTok{(}\StringTok{'./shapefiles/foreclosures.shp'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -477,7 +476,7 @@ Abaixo pode ser visto o gráfico produzido com os polígonos do
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=.65\linewidth]{sfiles/plot-1} 
+{\centering \includegraphics[width=0.65\linewidth]{sfiles/plot-1} 
 
 }
 
@@ -490,7 +489,7 @@ em:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{chi.poly@bbox}
+\NormalTok{chi.poly}\OperatorTok{@}\NormalTok{bbox}
 \end{Highlighting}
 \end{Shaded}
 
@@ -500,7 +499,7 @@ em:
 ## y  41.64423  42.03793
 \end{verbatim}
 
-No \emph{R}, com o auxílio do pacote \emph{ggmap}, pode-se criar uma
+No \emph{R}, com o auxílio do pacote \texttt{ggmap}, pode-se criar uma
 figura com os polígonos e um \emph{background} extraído do
 \href{https://www.google.com.br/maps}{Google Maps}, preenchendo os
 polígonos do \emph{shapefile} com a variável \emph{violent}, que contem
@@ -508,25 +507,15 @@ os dados de crimes violentos, para checar sua distribuição espacial:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(ggmap)}
-\NormalTok{chicago_map <-}\StringTok{ }\KeywordTok{get_map}\NormalTok{(}\DataTypeTok{location =} \NormalTok{chi.poly@bbox, }\DataTypeTok{maptype =} \StringTok{"terrain"}\NormalTok{,}
+\NormalTok{chicago_map <-}\StringTok{ }\KeywordTok{get_map}\NormalTok{(}\DataTypeTok{location =}\NormalTok{ chi.poly}\OperatorTok{@}\NormalTok{bbox, }\DataTypeTok{maptype =} \StringTok{"terrain"}\NormalTok{,}
                        \DataTypeTok{source =} \StringTok{"google"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: bounding box given to google - spatial extent only approximate.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(ggfortify)}
 \NormalTok{chicago_poly <-}\StringTok{ }\KeywordTok{fortify}\NormalTok{(chi.poly, }\DataTypeTok{region =} \StringTok{'SP_ID'}\NormalTok{)}
-\NormalTok{chicago_poly <-}\StringTok{ }\KeywordTok{merge}\NormalTok{(chicago_poly, chi.poly@data, }\DataTypeTok{by.x =} \StringTok{'id'}\NormalTok{,}
+\NormalTok{chicago_poly <-}\StringTok{ }\KeywordTok{merge}\NormalTok{(chicago_poly, chi.poly}\OperatorTok{@}\NormalTok{data, }\DataTypeTok{by.x =} \StringTok{'id'}\NormalTok{,}
                       \DataTypeTok{by.y =} \StringTok{'SP_ID'}\NormalTok{, }\DataTypeTok{all.x =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggmap}\NormalTok{(chicago_map) +}\StringTok{ }\KeywordTok{geom_polygon}\NormalTok{(}\DataTypeTok{data =} \NormalTok{chicago_poly,}
-                                       \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{long, }\DataTypeTok{y =} \NormalTok{lat, }\DataTypeTok{group =} \NormalTok{group, }\DataTypeTok{fill =} \NormalTok{violent),}
-                                       \DataTypeTok{size =} \NormalTok{.}\DecValTok{2}\NormalTok{, }\DataTypeTok{color =} \StringTok{'green'}\NormalTok{) +}\StringTok{ }
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggmap}\NormalTok{(chicago_map) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_polygon}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ chicago_poly,}
+                                       \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ long, }\DataTypeTok{y =}\NormalTok{ lat, }
+                                           \DataTypeTok{group =}\NormalTok{ group, }\DataTypeTok{fill =}\NormalTok{ violent),}
+                                       \DataTypeTok{size =}\NormalTok{ .}\DecValTok{2}\NormalTok{, }\DataTypeTok{color =} \StringTok{'green'}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{      }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{'Spectral'}\NormalTok{)}
 \NormalTok{p}
 \end{Highlighting}
@@ -534,7 +523,7 @@ os dados de crimes violentos, para checar sua distribuição espacial:
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=.65\linewidth]{sfiles/plot_mash-1} 
+{\centering \includegraphics[width=0.65\linewidth]{sfiles/plot_mash-1} 
 
 }
 
@@ -546,7 +535,6 @@ funções, como abaixo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(spdep)}
 \NormalTok{list.queen <-}\StringTok{ }\KeywordTok{poly2nb}\NormalTok{(chi.poly, }\DataTypeTok{queen =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{W <-}\StringTok{ }\KeywordTok{nb2listw}\NormalTok{(list.queen, }\DataTypeTok{style =} \StringTok{"W"}\NormalTok{, }\DataTypeTok{zero.policy =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
@@ -563,7 +551,7 @@ que contem os dados sobre desemprego:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{chi.ols <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(violent ~}\StringTok{ }\NormalTok{est_fcs_rt +}\StringTok{ }\NormalTok{bls_unemp, }\DataTypeTok{data =} \NormalTok{chi.poly@data)}
+\NormalTok{chi.ols <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(violent }\OperatorTok{~}\StringTok{ }\NormalTok{est_fcs_rt }\OperatorTok{+}\StringTok{ }\NormalTok{bls_unemp, }\DataTypeTok{data =}\NormalTok{ chi.poly}\OperatorTok{@}\NormalTok{data)}
 \KeywordTok{summary}\NormalTok{(chi.ols)}
 \end{Highlighting}
 \end{Shaded}
@@ -693,15 +681,16 @@ mais provável.
 dependente}\label{modelo-da-variavel-dependente}
 
 O modelo da variável dependente pode ser facilmente obtido no \emph{R}
-através da função \emph{lagsarlm}, do pacote \emph{spdep}, como pode ser
-visto abaixo, com os mesmos parâmetros da função \emph{lm},
-adicionando-se apenas o termo \emph{W}, ou seja, a matriz dos pesos
+através da função \texttt{lagsarlm}, do pacote \texttt{spdep}, como pode
+ser visto abaixo, com os mesmos parâmetros da função \emph{lm},
+adicionando-se apenas o termo \texttt{W}, ou seja, a matriz dos pesos
 espaciais:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{sar.chi <-}
-\StringTok{  }\KeywordTok{lagsarlm}\NormalTok{(violent ~}\StringTok{ }\NormalTok{est_fcs_rt +}\StringTok{ }\NormalTok{bls_unemp, }\DataTypeTok{data =} \NormalTok{chi.poly@data, W)}
+\StringTok{  }\KeywordTok{lagsarlm}\NormalTok{(violent }\OperatorTok{~}\StringTok{ }\NormalTok{est_fcs_rt }\OperatorTok{+}\StringTok{ }\NormalTok{bls_unemp, }
+           \DataTypeTok{data =}\NormalTok{ chi.poly}\OperatorTok{@}\NormalTok{data, }\DataTypeTok{listw =}\NormalTok{ W)}
   \KeywordTok{summary}\NormalTok{(sar.chi)}
 \end{Highlighting}
 \end{Shaded}
@@ -745,14 +734,14 @@ obtidos abaixo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{chi.poly@data$chi.ols.res <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(chi.ols) }\CommentTok{#residuals ols}
-\NormalTok{chi.poly@data$chi.sar.res <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(sar.chi) }\CommentTok{#residual sar}
+\NormalTok{chi.poly}\OperatorTok{@}\NormalTok{data}\OperatorTok{$}\NormalTok{chi.ols.res <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(chi.ols) }\CommentTok{#residuals ols}
+\NormalTok{chi.poly}\OperatorTok{@}\NormalTok{data}\OperatorTok{$}\NormalTok{chi.sar.res <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(sar.chi) }\CommentTok{#residual sar}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \subfloat[Linear\label{fig:residual_plot1}]{\includegraphics[width=.49\linewidth]{sfiles/residual_plot-1} }\subfloat[Espacial\label{fig:residual_plot2}]{\includegraphics[width=.49\linewidth]{sfiles/residual_plot-2} }
+{\centering \subfloat[Linear\label{fig:residual_plot1}]{\includegraphics[width=0.49\linewidth]{sfiles/residual_plot-1} }\subfloat[Espacial\label{fig:residual_plot2}]{\includegraphics[width=0.49\linewidth]{sfiles/residual_plot-2} }
 
 }
 
@@ -760,11 +749,11 @@ obtidos abaixo:
 \end{figure}
 
 Os gráficos acima mostram que a autocorrelação espacial dos resíduos é
-menor no modelo da variável dependente. Segundo
-Samiento-Barbieri(\protect\hyperlink{ref-sarmiento-barbieri}{2016}),
-``os gráficos de resíduos ainda apresentam a presença de alguma
-autocorrelação espacial. É muito provável que um modelo mais completo
-seja necessário. A literatura se expandiu para modelos mais complexos''.
+menor no modelo da variável dependente. Segundo SARMIENTO-BARBIERI
+(\protect\hyperlink{ref-sarmiento-barbieri}{2016}), ``os gráficos de
+resíduos ainda apresentam a presença de alguma autocorrelação espacial.
+É muito provável que um modelo mais completo seja necessário. A
+literatura se expandiu para modelos mais complexos''.
 
 \subsection{Exemplo 2}\label{exemplo-2}
 
@@ -784,7 +773,8 @@ verificar a autocorrelação espacial dos resíduos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{boston_lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(CMEDV) ~}\StringTok{ }\NormalTok{RM +}\StringTok{ }\NormalTok{LSTAT +}\StringTok{ }\NormalTok{CRIM +}\StringTok{ }\NormalTok{ZN +}\StringTok{ }\NormalTok{CHAS +}\StringTok{ }\NormalTok{DIS, }\DataTypeTok{data =} \NormalTok{boston.c)}
+\NormalTok{boston_lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(CMEDV) }\OperatorTok{~}\StringTok{ }\NormalTok{RM }\OperatorTok{+}\StringTok{ }\NormalTok{LSTAT }\OperatorTok{+}\StringTok{ }\NormalTok{CRIM }\OperatorTok{+}\StringTok{ }\NormalTok{ZN }\OperatorTok{+}\StringTok{ }\NormalTok{CHAS }\OperatorTok{+}\StringTok{ }\NormalTok{DIS, }
+                \DataTypeTok{data =}\NormalTok{ boston.c)}
 \KeywordTok{summary}\NormalTok{(boston_lm)}
 \end{Highlighting}
 \end{Shaded}
@@ -823,7 +813,7 @@ Moran, como pode-se ver abaixo:
 \begin{Highlighting}[]
 \NormalTok{coords <-}\StringTok{ }\NormalTok{boston.utm}
 \NormalTok{IDs <-}\StringTok{ }\KeywordTok{row.names}\NormalTok{(}\KeywordTok{as}\NormalTok{(boston.c, }\StringTok{"data.frame"}\NormalTok{))}
-\NormalTok{boston_kdl <-}\StringTok{ }\KeywordTok{dnearneigh}\NormalTok{(coords, }\DataTypeTok{d1 =} \DecValTok{0}\NormalTok{, }\DataTypeTok{d2 =} \FloatTok{3.973}\NormalTok{, }\DataTypeTok{row.names =} \NormalTok{IDs)}
+\NormalTok{boston_kdl <-}\StringTok{ }\KeywordTok{dnearneigh}\NormalTok{(coords, }\DataTypeTok{d1 =} \DecValTok{0}\NormalTok{, }\DataTypeTok{d2 =} \FloatTok{3.973}\NormalTok{, }\DataTypeTok{row.names =}\NormalTok{ IDs)}
 \NormalTok{boston_W <-}\StringTok{ }\KeywordTok{nb2listw}\NormalTok{(boston_kdl)}
 \KeywordTok{lm.morantest}\NormalTok{(boston_lm, boston_W)}
 \end{Highlighting}
@@ -913,7 +903,8 @@ pesos espaciais.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{boston_lag <-}\StringTok{ }\KeywordTok{lagsarlm}\NormalTok{(}\KeywordTok{log}\NormalTok{(CMEDV) ~}\StringTok{ }\NormalTok{RM +}\StringTok{ }\NormalTok{LSTAT +}\StringTok{ }\NormalTok{CRIM +}\StringTok{ }\NormalTok{ZN +}\StringTok{ }\NormalTok{CHAS +}\StringTok{ }\NormalTok{DIS, }\DataTypeTok{data =} \NormalTok{boston.c, boston_W)}
+\NormalTok{boston_lag <-}\StringTok{ }\KeywordTok{lagsarlm}\NormalTok{(}\KeywordTok{log}\NormalTok{(CMEDV) }\OperatorTok{~}\StringTok{ }\NormalTok{RM }\OperatorTok{+}\StringTok{ }\NormalTok{LSTAT }\OperatorTok{+}\StringTok{ }\NormalTok{CRIM }\OperatorTok{+}\StringTok{ }\NormalTok{ZN }\OperatorTok{+}\StringTok{ }\NormalTok{CHAS }\OperatorTok{+}\StringTok{ }\NormalTok{DIS, }
+                       \DataTypeTok{data =}\NormalTok{ boston.c, }\DataTypeTok{listw =}\NormalTok{ boston_W)}
 \KeywordTok{summary}\NormalTok{(boston_lag)}
 \end{Highlighting}
 \end{Shaded}

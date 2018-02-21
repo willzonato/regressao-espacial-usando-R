@@ -7,18 +7,17 @@ output:
 
 Nesta seção são desenvolvidos dois exemplos do uso das ténicas de regressão espacial usando o R, com o intuito de demonstrar como este *software* pode ser utilizado para facilmente aplicar as teorias da econometria espacial.
 
-O primeiro exemplo foi extraído de [@sarmiento-barbieri], dados de crimes violentos são correlacionados com dados de execução de hipotecas e de desemprego na cidade de Chicago (EUA).
+O primeiro exemplo foi extraído de @sarmiento-barbieri, dados de crimes violentos são correlacionados com dados de execução de hipotecas e de desemprego na cidade de Chicago (EUA).
 
 E o segundo exemplo, aplicado à área de avaliação de imóveis, onde dados censitários de 2000 na Califórnia (EUA) são utilizados para estudo da autocorrelação espacial dos valores dos imóveis.
 
 ## Exemplo 1
 
-O exemplo abaixo é reproduzido de Sarmiento-Barbieri[-@sarmiento-barbieri]. Os dados aqui utilizados aqui podem ser obtidos no sítio [www.econ.uiuc.edu/~lab/workshop/foreclosures/](http://www.econ.uiuc.edu/~lab/workshop/foreclosures/).
+O exemplo abaixo é reproduzido de @sarmiento-barbieri. Os dados aqui utilizados aqui podem ser obtidos no sítio [www.econ.uiuc.edu/~lab/workshop/foreclosures/](http://www.econ.uiuc.edu/~lab/workshop/foreclosures/).
 
-De posse dos arquivos, primeiramente, deve-se fazer a leitura dos mesmos dentro do sistema *R*.
+De posse dos arquivos, primeiramente, deve-se fazer a leitura do *shapefile* dentro do sistema *R*, através da função `readOGR` do pacote `rgdal`.
 
 ```{r read_shp, message = FALSE}
-library(rgdal)
 chi.poly <- readOGR('./shapefiles/foreclosures.shp')
 ```
 
@@ -42,18 +41,17 @@ Estes polígonos encontram-se georreferenciados e todas as coordenadas estão in
 chi.poly@bbox
 ```
 
-No *R*, com o auxílio do pacote *ggmap*, pode-se criar uma figura com os polígonos e um *background* extraído do [Google Maps](https://www.google.com.br/maps), preenchendo os polígonos do *shapefile* com a variável *violent*, que contem os dados de crimes violentos, para checar sua distribuição espacial:
+No *R*, com o auxílio do pacote `ggmap`, pode-se criar uma figura com os polígonos e um *background* extraído do [Google Maps](https://www.google.com.br/maps), preenchendo os polígonos do *shapefile* com a variável *violent*, que contem os dados de crimes violentos, para checar sua distribuição espacial:
 
 ```{r plot_mash, fig.cap = "Distribuição dos crimes violentos na cidade de Chicago"}
-library(ggmap)
 chicago_map <- get_map(location = chi.poly@bbox, maptype = "terrain",
                        source = "google")
-library(ggfortify)
 chicago_poly <- fortify(chi.poly, region = 'SP_ID')
 chicago_poly <- merge(chicago_poly, chi.poly@data, by.x = 'id',
                       by.y = 'SP_ID', all.x = TRUE)
 p <- ggmap(chicago_map) + geom_polygon(data = chicago_poly,
-                                       aes(x = long, y = lat, group = group, fill = violent),
+                                       aes(x = long, y = lat, 
+                                           group = group, fill = violent),
                                        size = .2, color = 'green') + 
       scale_fill_distiller(palette = 'Spectral')
 p
@@ -62,7 +60,6 @@ p
 No *R*, a criação da matriz $W$ é feita através do uso de duas funções, como abaixo:
 
 ```{r W}
-library(spdep)
 list.queen <- poly2nb(chi.poly, queen = TRUE)
 W <- nb2listw(list.queen, style = "W", zero.policy = TRUE)
 ```
@@ -96,11 +93,12 @@ Desta maneira, resta-nos observar o valor das estatísticas do teste robusto (*R
 
 ## Modelo da variável dependente
 
-O modelo da variável dependente pode ser facilmente obtido no *R* através da função *lagsarlm*, do pacote *spdep*, como pode ser visto abaixo, com os mesmos parâmetros da função *lm*, adicionando-se apenas o termo *W*, ou seja, a matriz dos pesos espaciais:
+O modelo da variável dependente pode ser facilmente obtido no *R* através da função `lagsarlm`, do pacote `spdep`, como pode ser visto abaixo, com os mesmos parâmetros da função *lm*, adicionando-se apenas o termo `W`, ou seja, a matriz dos pesos espaciais:
 
 ```{r modelo_var_dep}
 sar.chi <-
-  lagsarlm(violent ~ est_fcs_rt + bls_unemp, data = chi.poly@data, W)
+  lagsarlm(violent ~ est_fcs_rt + bls_unemp, 
+           data = chi.poly@data, listw = W)
   summary(sar.chi)
 ```
 
@@ -113,10 +111,8 @@ chi.poly@data$chi.ols.res <- resid(chi.ols) #residuals ols
 chi.poly@data$chi.sar.res <- resid(sar.chi) #residual sar
 ```
 
-```{r residual_plot, out.width='.49\\linewidth', fig.show='hold', echo = FALSE, fig.cap="Resíduos das regressões linear e espacial", fig.subcap = c("Linear", "Espacial")}
+```{r residual_plot, out.width='49%', fig.show='hold', echo = FALSE, fig.cap="Resíduos das regressões linear e espacial", fig.subcap = c("Linear", "Espacial")}
 par(mfrow = c(1,2))
-
-library(RColorBrewer)
 
 spplot(chi.poly, "chi.ols.res",
        at = seq(min(chi.poly@data$chi.ols.res, na.rm = TRUE),
@@ -130,7 +126,7 @@ spplot(chi.poly, "chi.sar.res",
 
 ```
 
-Os gráficos acima mostram que a autocorrelação espacial dos resíduos é menor no modelo da variável dependente. Segundo Samiento-Barbieri[-@sarmiento-barbieri], "os gráficos de resíduos ainda apresentam a presença de alguma autocorrelação espacial. É muito provável que um modelo mais completo seja necessário. A literatura se expandiu para modelos mais complexos". 
+Os gráficos acima mostram que a autocorrelação espacial dos resíduos é menor no modelo da variável dependente. Segundo @sarmiento-barbieri, "os gráficos de resíduos ainda apresentam a presença de alguma autocorrelação espacial. É muito provável que um modelo mais completo seja necessário. A literatura se expandiu para modelos mais complexos". 
 
 ## Exemplo 2
 
@@ -143,7 +139,8 @@ data(boston)
 Inicialmente, monta-se um modelo de regressão linear ordinária, para verificar a autocorrelação espacial dos resíduos.
 
 ```{r bonston_lm}
-boston_lm <- lm(log(CMEDV) ~ RM + LSTAT + CRIM + ZN + CHAS + DIS, data = boston.c)
+boston_lm <- lm(log(CMEDV) ~ RM + LSTAT + CRIM + ZN + CHAS + DIS, 
+                data = boston.c)
 summary(boston_lm)
 ```
 
@@ -168,7 +165,8 @@ lm.LMtests(boston_lm, boston_W, test = "all")
 Finalmente, elabora-se o modelo da variável dependente com o vetor de pesos espaciais.
 
 ```{r boston_lag}
-boston_lag <- lagsarlm(log(CMEDV) ~ RM + LSTAT + CRIM + ZN + CHAS + DIS, data = boston.c, boston_W)
+boston_lag <- lagsarlm(log(CMEDV) ~ RM + LSTAT + CRIM + ZN + CHAS + DIS, 
+                       data = boston.c, listw = boston_W)
 summary(boston_lag)
 ```
 

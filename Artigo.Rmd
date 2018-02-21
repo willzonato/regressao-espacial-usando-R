@@ -1,11 +1,14 @@
 ---
 title: "Regressão espacial com o uso do R"
 author:
-- Gabriel Zanela - gazela@gmail.com
-- "Auditoria,\tAvaliaçãoes e Perícias de Engenharia"
-- Instituto de Pós-Graduação - IPOG
-date: "Florianópolis, SC, `r format(Sys.time(), '%d de %B de %Y')`"
+- Luiz Fernando Palin Droubi
+- Willian Zonato
+date: "`r format(Sys.time(), '%d de %B de %Y')`"
 output:
+  html_document: 
+    fig_caption: yes
+    keep_md: yes
+    number_sections: yes
   pdf_document:
     fig_caption: yes
     fig_height: 3
@@ -13,11 +16,6 @@ output:
     keep_tex: yes
     latex_engine: xelatex
     number_section: yes
-  word_document:
-    fig_caption: yes
-    fig_height: 3
-    fig_width: 3.4
-    reference_docx: modelo.docx
 geometry: margin=2.5cm
 header-includes:
 - \usepackage{sectsty} \sectionfont{\fontsize{12}{15}\selectfont}
@@ -36,23 +34,17 @@ bibliography: bibliography.bib
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-	echo = TRUE,
-	fig.align = "center",
-	fig.height = 5,
-	fig.path = "sfiles/",
-	fig.pos = "H",
-	fig.width = 5,
-	message = FALSE,
-	cache = TRUE,
-	concordance = FALSE,
-	dev = "png",
-	dpi = 600,
-	out.width = ".65\\linewidth",
-	split = FALSE,
-	tidy = FALSE
+	echo = TRUE, fig.align = "center", fig.height = 5, fig.path = "sfiles/", fig.pos = "H",
+	fig.width = 5, message = FALSE, cache = TRUE, concordance = FALSE, dev = "png",
+	dpi = 600, out.width = "65%",	split = FALSE, tidy = FALSE, warning = FALSE
 )
 library(knitr)
 library(bookdown)
+library(ggmap)
+library(ggfortify)
+library(spdep)
+library(RColorBrewer)
+library(rgdal)
 ```
 
 ## Resumo {-}
@@ -63,19 +55,19 @@ library(bookdown)
 
 #INTRODUÇÃO
 
-Segundo Trivelloni[-@trivelloni07], 
+Segundo @trivelloni07, 
 
 > os modelos tradicionais de inferência estatística mostram dificuldades para lidar de maneira eficiente com os efeitos espaciais nos dados; as variáveis de localização, quando não são corretamente especificadas nos modelos, além da perda de poder explicativo dos modelos produzem autocorrelação espacial nos resíduos da regressão, invalidando seus resultados.
 
 A grande maioria dos avaliadores na atualidade utiliza os modelos tradicionais de inferência estatística, que:
 
-> mostram dificuldades para lidar de maneira eficiente com os efeitos espaciais nos dados; as variáveis de localização, quando não são corretamente especificadas nos modelos, além da perda de poder explicativo dos modelos produzem autocorrelação espacial nos resíduos da regressão, invalidando seus resultados.[@trivelloni07]
+> mostram dificuldades para lidar de maneira eficiente com os efeitos espaciais nos dados; as variáveis de localização, quando não são corretamente especificadas nos modelos, além da perda de poder explicativo dos modelos produzem autocorrelação espacial nos resíduos da regressão, invalidando seus resultados[@trivelloni07].
 
 Porém, é sabido que "os modelos de inferência tradicional podem também alcançar resultados adequados se as variáveis explicativas que tem estrutura espacial forem corretamente especificadas no modelo."[@trivelloni07]
 
 Desta maneira, é possível que sejam combinadas as técnicas da inferência estatística tradicional com técnicas espaciais para a especificação da compenente espacial do valor, produzindo assim um "modelo híbrido."
 
-Ainda de acordo com Trivelloni[-@trivelloni07], "vários trabalhos têm mostrado que esta combinação pode produzir melhores resultados que os conseguidos com cada método de forma isolada."
+Ainda de acordo com @trivelloni07, "vários trabalhos têm mostrado que esta combinação pode produzir melhores resultados que os conseguidos com cada método de forma isolada."
 
 ```{r revisao, child = 'revisao.Rmd'}
 ```
