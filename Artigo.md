@@ -317,7 +317,8 @@ summary(chi.ols)
 
 
 ```r
-moran.lm <- lm.morantest(chi.ols, W, alternative = "two.sided")
+moran.lm <- lm.morantest(model = chi.ols, listw = W, 
+                         alternative = "two.sided")
 moran.lm
 ```
 
@@ -341,7 +342,7 @@ moran.lm
 
 
 ```r
-LM <- lm.LMtests(chi.ols, W, test = "all")
+LM <- lm.LMtests(model = chi.ols, listw = W, test = "all")
 LM
 ```
 
@@ -514,7 +515,7 @@ coords <- boston.utm
 IDs <- row.names(as(boston.c, "data.frame"))
 boston_kdl <- dnearneigh(coords, d1 = 0, d2 = 3.973, row.names = IDs)
 boston_W <- nb2listw(boston_kdl)
-lm.morantest(boston_lm, boston_W)
+lm.morantest(model = boston_lm, listw = boston_W)
 ```
 
 ```
@@ -539,7 +540,7 @@ Alternativamente, a autocorrelação espacial pode ser pesquisada pelo Teste do 
 
 
 ```r
-lm.LMtests(boston_lm, boston_W, test = "all")
+lm.LMtests(model = boston_lm, listw = boston_W, test = "all")
 ```
 
 ```
@@ -637,7 +638,7 @@ summary(boston_lag)
 ## test value: 1.9852, p-value: 0.15884
 ```
 
-Verifica-se no sumário acima que a autocorrelação espacial foi eliminada do modelo, dado que o p-valor resultou maior que 5% (0,15884).
+Verifica-se no sumário acima que a autocorrelação espacial foi eliminada do modelo, dado que o *p-valor* resultou maior que 5% (0,15884).
 
 
 # CONCLUSÃO

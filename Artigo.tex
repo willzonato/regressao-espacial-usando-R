@@ -582,7 +582,8 @@ que contem os dados sobre desemprego:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{moran.lm <-}\StringTok{ }\KeywordTok{lm.morantest}\NormalTok{(chi.ols, W, }\DataTypeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\NormalTok{moran.lm <-}\StringTok{ }\KeywordTok{lm.morantest}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ chi.ols, }\DataTypeTok{listw =}\NormalTok{ W, }
+                         \DataTypeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
 \NormalTok{moran.lm}
 \end{Highlighting}
 \end{Shaded}
@@ -608,7 +609,7 @@ Lagrange}\label{teste-do-multiplicador-de-lagrange-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{LM <-}\StringTok{ }\KeywordTok{lm.LMtests}\NormalTok{(chi.ols, W, }\DataTypeTok{test =} \StringTok{"all"}\NormalTok{)}
+\NormalTok{LM <-}\StringTok{ }\KeywordTok{lm.LMtests}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ chi.ols, }\DataTypeTok{listw =}\NormalTok{ W, }\DataTypeTok{test =} \StringTok{"all"}\NormalTok{)}
 \NormalTok{LM}
 \end{Highlighting}
 \end{Shaded}
@@ -815,7 +816,7 @@ Moran, como pode-se ver abaixo:
 \NormalTok{IDs <-}\StringTok{ }\KeywordTok{row.names}\NormalTok{(}\KeywordTok{as}\NormalTok{(boston.c, }\StringTok{"data.frame"}\NormalTok{))}
 \NormalTok{boston_kdl <-}\StringTok{ }\KeywordTok{dnearneigh}\NormalTok{(coords, }\DataTypeTok{d1 =} \DecValTok{0}\NormalTok{, }\DataTypeTok{d2 =} \FloatTok{3.973}\NormalTok{, }\DataTypeTok{row.names =}\NormalTok{ IDs)}
 \NormalTok{boston_W <-}\StringTok{ }\KeywordTok{nb2listw}\NormalTok{(boston_kdl)}
-\KeywordTok{lm.morantest}\NormalTok{(boston_lm, boston_W)}
+\KeywordTok{lm.morantest}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ boston_lm, }\DataTypeTok{listw =}\NormalTok{ boston_W)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -842,7 +843,7 @@ Teste do multiplicador de Lagrange:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{lm.LMtests}\NormalTok{(boston_lm, boston_W, }\DataTypeTok{test =} \StringTok{"all"}\NormalTok{)}
+\KeywordTok{lm.LMtests}\NormalTok{(}\DataTypeTok{model =}\NormalTok{ boston_lm, }\DataTypeTok{listw =}\NormalTok{ boston_W, }\DataTypeTok{test =} \StringTok{"all"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -944,7 +945,7 @@ pesos espaciais.
 \end{verbatim}
 
 Verifica-se no sumário acima que a autocorrelação espacial foi eliminada
-do modelo, dado que o p-valor resultou maior que 5\% (0,15884).
+do modelo, dado que o \emph{p-valor} resultou maior que 5\% (0,15884).
 
 \section{CONCLUSÃO}\label{conclusao}
 
