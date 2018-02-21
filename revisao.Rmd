@@ -1,0 +1,122 @@
+# REVISÃO BIBLIOGRÁFICA
+
+## Inferência estatística
+
+Segundo Sarmiento-Barbieri[-@sarmiento-barbieri], "o método tradicional, por muitos anos, tem sido ignorar a dependência espacial dos dados e apenas rodar uma regressão linear" do tipo:
+
+\begin{equation}
+  \label{eq-OLS}
+  Y = X\beta + \epsilon
+\end{equation}
+
+> O problema em ignorar a estrutura espacial dos dados implica que as estimativas da regressão linear no modelo não-espacial podem estar enviesadas, inconsistentes ou ineficientes, dependendo de qual é a real dependência (dos dados espaciais).[@sarmiento-barbieri]
+
+## Modelando a dependência espacial
+
+Autocorrelação espacial mede o quanto um dado fenômeno de interesse está correlacionado consigo mesmo no Espaço (Cliff and Ord (1973) apud [@sarmiento-barbieri]).
+
+Sarmiento-Barbieri[-@sarmiento-barbieri] salienta que a autocorrelação espacial pode ser positiva, ou seja, valores similares aparecem sempre próximos uns dos outros, formando um *cluster*, ou negativa, ou seja, dados vizinhos são dissimilares.
+
+Segundo ANSELIN (apud [@sarmiento-barbieri]), pode-se expressar a existência de autocorrelação espacial com a seguinte condição de momentos:
+
+\begin{equation}
+  \label{eq-cov}
+  Cov(y_i,y_j) \neq  0\ para\ i \neq  j
+\end{equation}
+
+onde $y_i$ and $y_j$ são observações de uma variável aleatória nos locais $i$ e $j$.
+
+Para [@sarmiento-barbieri], "o problema então seria estimar a matriz de covariância $N$ x $N$ diretamente para $N$ observações." 
+
+> Para contornar esse problema, impomos restrições à natureza das interações. Um tipo de restrição é definir para cada ponto de dados um "conjunto de vizinhança" relevante. Na econometria espacial, isto é operacionalizado através da **matriz espacial de pesos**.
+
+Esta nada mais é do que uma matriz simétrica em que para cada observação (linhas) indica os locais de vizinhança (colunas) através de elementos não-nulos. Ou seja, os elementos $w_{ij}$ da matriz espacial de pesos $W$ serão computados da seguinte forma:
+
+\begin{equation}
+  \label{eq-W}
+  [w_{ij}] = \left\{\begin{matrix}
+  1 & se & j \in N(i)\\ 
+  0 & 
+\end{matrix}\right.
+\end{equation}
+
+onde $N(i)$ é o conjunto de dados vizinhos da observação $i$.
+
+Outro procedimento viável é definir dois dados como vizinhos se eles obedecem um mesmo critério de distância, isto é, $j \in N(j)$ se $d_{ij} < d_{max}$, onde $d$ é a distância entre os dados $i$ e $j$.
+
+## Modelos de regressão espacial
+
+Segundo Trivelloni[-@trivelloni07], os principais modelos de regressão utilizados na econometria espacial são o Modelo da Variável Dependente e o Modelo Espacial do Erro.
+
+Nesta seção veremos as principais características de cada modelo e sua formulação.
+
+### Modelos espaciais autoregressivos ou Modelo da Variável Dependente
+
+A dependência espacial pode ser modelada em uma regressão linear  de forma semelhante a um processo autorregressivo em séries temporais. Segundo [@sarmiento-barbieri], isto pode ser escrito formalmente como na equação abaixo:
+
+\begin{equation}
+  \label{eq-SAR}
+  y = \rho Wy + X \beta + \epsilon
+\end{equation}
+
+Vê-se na equação \ref{eq-SAR}, que além dos termos da equação \ref{eq-OLS}, tem-se um termo adicional ($\rho Wy$), que é justamente o termo que modela a autocorrelação da variável dependente ($y$), em que $W$ é a matriz de pesos espaciais e$\rho$ é o parâmetro (a ser estimado) de autocorrelação espacial da variável dependente.
+
+Porém, de acordo com ANSELIN (apud [@sarmiento-barbieri]), ao contrário das séries temporais, nas correlações espaciais os $[Wy]_i$ estão sempre correlacionados com os $\epsilon_i$ independentemente da estrutura dos erros. Isto implica que as estimativas no modelo não-espacial estarão enviesadas e inconsistentes.
+
+### Modelo espacial do erro
+
+Os modelos deste tipo se apresentam na forma de uma regressão linear ordinária (RLO), porém aqui a variável dos erros $\epsilon$ é espacialmente autocorrelacionada, como podemos notar na equação \ref{eq-SEM-error}, ao contrário da RLO, onde a variável $\epsilon$ é aleatória, com distribuição normal e média zero.
+
+\begin{equation}
+  \label{eq-SEM}
+  y = X\beta + \epsilon
+\end{equation}
+
+Com: 
+
+\begin{equation}
+  \label{eq-SEM-error}
+  \epsilon = \lambda W \epsilon + u
+\end{equation}
+
+## Modelos geoestatísticos
+
+Segundo Trivelloni[-@trivelloni07], "os modelos geostatísticos buscam representar e modelar a variação espacial de uma variável regionalizada".
+
+Variável regionalizada, ou seja, uma variável aleatória ($Z$) em que há dependência entre seu valor e sua localização espacial, pode ser expressa como[@trivelloni07]:
+
+\begin{equation}
+  \label{eq-regional}
+  Z(x) = \mu(x) + \epsilon'(x) + \epsilon''
+\end{equation}  
+
+onde x representa uma posição em uma, duas ou três dimensões; $\mu(x)$ é uma função determinística que descreve a componente estrutural de $Z$ em $x$; $\epsilon'(x)$ é um termo estocástico correlacionado que varia localmente e $\epsilon''$ é um ruído aleatório não correlacionado, com distribuição normal, média zero e variância $\sigma^2$.
+
+Desta forma, pode-se definir o estimador de krigagem ($Z_k$), como a combinação linear dos $Z(x_i)$ e os ponderadores $\lambda_i$, da seguinte maneira[@trivelloni07]:
+
+\begin{equation}
+  \label{eq-krigagem}
+  Z_k = \sum{\lambda_i Z_i}
+\end{equation} 
+
+onde os ponderadores $\lambda_i$ são obtidos de forma que o estimador $Z_k$ seja ótimo, ou seja, a variância do erro seja mínima
+
+## Testes de detecção de autocorrelação espacial
+
+### Teste I de Moran
+
+Análogo ao teste de Durbin-Watson, porém em versão bidimensional:
+
+\begin{equation}
+  \label{eq-moran}
+  I = \frac{e'We}{e'e}
+\end{equation}
+onde $e = y - \beta X$, $\beta = ({X}'X)^{-1}X'y$ e $W$ é a matriz de pesos espaciais.
+
+A estatística em pauta depende da escolha da matriz $W$.
+
+### Teste do multiplicador de Lagrange
+
+Embora o teste de Moran tenha a interessante característica de ter um alto poder contra uma ampla gama de alternativas (ANSELIN apud [@sarmiento-barbieri], o teste não dá parâmetros para a escolha de modelos alternativos.
+
+Por outro lado, o teste  do multiplicador de Lagrange especifica as hipóteses alternativas de autocorrelação espacial da variável dependente e da autocorrelação espacial dos resíduos, o que pode ser útil nestes casos.

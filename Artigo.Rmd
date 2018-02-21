@@ -1,0 +1,96 @@
+---
+title: "Regressão espacial com o uso do R"
+author:
+- Gabriel Zanela - gazela@gmail.com
+- "Auditoria,\tAvaliaçãoes e Perícias de Engenharia"
+- Instituto de Pós-Graduação - IPOG
+date: "Florianópolis, SC, `r format(Sys.time(), '%d de %B de %Y')`"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 3.4
+    keep_tex: yes
+    latex_engine: xelatex
+    number_section: yes
+  word_document:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 3.4
+    reference_docx: modelo.docx
+geometry: margin=2.5cm
+header-includes:
+- \usepackage{sectsty} \sectionfont{\fontsize{12}{15}\selectfont}
+- \usepackage[brazil]{babel}
+- \usepackage{graphicx}
+- \usepackage{float}
+- \usepackage{subfig}
+- \usepackage{caption}
+link-citations: yes
+mainfont: Times New Roman
+fontsize: 12pt
+sansfont: Times New Roman
+subtitle: null
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	fig.align = "center",
+	fig.height = 5,
+	fig.path = "sfiles/",
+	fig.pos = "H",
+	fig.width = 5,
+	message = FALSE,
+	cache = TRUE,
+	concordance = FALSE,
+	dev = "png",
+	dpi = 600,
+	out.width = ".65\\linewidth",
+	split = FALSE,
+	tidy = FALSE
+)
+library(knitr)
+library(bookdown)
+```
+
+## Resumo {-}
+
+*Os modelos estatísticos espaciais, notadamente os modelos de regressão espacial e geoestatísticos, vem sendo progressivamente cada vez mais utilizados nas avaliações de imóveis. O uso de modelos de regressão linear com dados espaciais são sempre suspeitos: a possibilidade de autocorrelação espacial dos resíduos é grande, ainda mais na área de avaliação de imóveis urbanos, onde a variável localização é sabidamente importante na imensa maioria dos centros urbanos. Atualmente, como meio de contornar este problema, a maioria dos avaliadores adota a criação de variáveis de distância a polos de valorização, mas isto requer um conhecimento detalhado do local por parte do avaliador e nem sempre estas variáveis podem ser definidas precisamente, ou ainda, enquanto captam a influência da proximidade de um determinado polo, deixam escapar a influência de outros fatores de valorização. No entanto, na regressão espacial, há a dificuldade computacional (necessidade de softwares específicos, treinamento, etc.). Pretende-se demonstrar neste artigo como os avaliadores podem fazer uso da poderosa linguagem **R** para a utilização da regressão espacial, com uma curva de aprendizado suave.*
+
+**_Palavras-chave_**: *Regressão Espacial. Avaliação de imóveis. Inferência*
+
+#INTRODUÇÃO
+
+Segundo Trivelloni[-@trivelloni07], 
+
+> os modelos tradicionais de inferência estatística mostram dificuldades para lidar de maneira eficiente com os efeitos espaciais nos dados; as variáveis de localização, quando não são corretamente especificadas nos modelos, além da perda de poder explicativo dos modelos produzem autocorrelação espacial nos resíduos da regressão, invalidando seus resultados.
+
+A grande maioria dos avaliadores na atualidade utiliza os modelos tradicionais de inferência estatística, que:
+
+> mostram dificuldades para lidar de maneira eficiente com os efeitos espaciais nos dados; as variáveis de localização, quando não são corretamente especificadas nos modelos, além da perda de poder explicativo dos modelos produzem autocorrelação espacial nos resíduos da regressão, invalidando seus resultados.[@trivelloni07]
+
+Porém, é sabido que "os modelos de inferência tradicional podem também alcançar resultados adequados se as variáveis explicativas que tem estrutura espacial forem corretamente especificadas no modelo."[@trivelloni07]
+
+Desta maneira, é possível que sejam combinadas as técnicas da inferência estatística tradicional com técnicas espaciais para a especificação da compenente espacial do valor, produzindo assim um "modelo híbrido."
+
+Ainda de acordo com Trivelloni[-@trivelloni07], "vários trabalhos têm mostrado que esta combinação pode produzir melhores resultados que os conseguidos com cada método de forma isolada."
+
+```{r revisao, child = 'revisao.Rmd'}
+```
+
+```{r desenvolvimento, child = 'desenvolvimento.Rmd'}
+```
+
+
+# CONCLUSÃO
+
+O sistema **R** mostrou-se adequado para a elaboração de modelos de regressão espacial, com funções específicas para isso, que podem ser utilizadas com facilidade, apenas fornecendo-se uma fórmula comum de regressão linear, os dados, e uma matriz de pesos espaciais.
+
+O **R** também é eficiente para a construção da própria matriz de pesos espaciais, com várias funções para isto. 
+A utilização de modelos de regressão espacial deverá ser cada vez maior na área de avaliação de imóveis no futuro e o sistema **R** pode vir a se tornar uma das ferramentas mais utilizadas, pela sua grande facilidade de uso, pela grande quantidade de pacotes relacionados à área e até pelo fato de ser um software livre.
+
+
+# REFERÊNCIAS
+
